@@ -1,6 +1,8 @@
 use actix_files as fs; 
 use actix_web::{web, App, HttpServer, Responder, HttpResponse};
 use serde::{Deserialize, Serialize};
+use mergiraf::line_merge_and_structured_resolution;
+use mergiraf::settings::DisplaySettings;
 
 #[derive(Serialize, Deserialize)]
 struct GreetingRequest {
@@ -25,9 +27,19 @@ struct ResolveResponse {
 }
 
 async fn resolve(req: web::Json<ResolveRequest>) -> impl Responder {
-    let concatenated = format!("{} {} {}", req.base, req.left, req.right);
+    // let concatenated = format!("{} {} {}", req.base, req.left, req.right);
+    let merge_result = line_merge_and_structured_resolution(
+        &req.base,
+        &req.left,
+        &req.right,
+        &"temp/Base.py",
+        &DisplaySettings::default(),
+        true,
+        None,
+        None,
+    );
     let response = ResolveResponse {
-        result: concatenated,
+        result: merge_result.contents,
     };
     HttpResponse::Ok().json(response)
 }
