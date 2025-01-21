@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolve API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        .container {
+            width: 45%;
+        }
+        .input-area, .output-area {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            font-size: 1.2em;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container input-area">
+        <h2>Input</h2>
+        <textarea id="value1" placeholder="Enter first value"></textarea>
+        <textarea id="value2" placeholder="Enter second value"></textarea>
+        <textarea id="value3" placeholder="Enter third value"></textarea>
+        <button onclick="resolve()">Submit</button>
+    </div>
+
+    <div class="container output-area">
+        <h2>Output</h2>
+        <div class="result" id="result">Result will be displayed here...</div>
+    </div>
+
+    <script>
+        async function resolve() {
+            const value1 = document.getElementById("value1").value;
+            const value2 = document.getElementById("value2").value;
+            const value3 = document.getElementById("value3").value;
+
+            const response = await fetch('/resolve', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ base: value1, left:value2, right:value3 })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                document.getElementById("result").innerText = data.result;
+            } else {
+                document.getElementById("result").innerText = "Error processing request.";
+            }
+        }
+    </script>
+</body>
+</html>
