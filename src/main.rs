@@ -32,11 +32,11 @@ async fn resolve(req: web::Json<ResolveRequest>) -> impl Responder {
         &req.base,
         &req.left,
         &req.right,
-        &"temp/Base.py",
+        &"temp/Base.usfm",
         &DisplaySettings::default(),
         true,
         None,
-        None,
+        std::option::Option::Some("./debug"),
     );
     let response = ResolveResponse {
         result: merge_result.contents,

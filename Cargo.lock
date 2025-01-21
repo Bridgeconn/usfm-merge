@@ -1200,6 +1200,7 @@ dependencies = [
  "tree-sitter-solidity",
  "tree-sitter-toml-ng",
  "tree-sitter-typescript",
+ "tree-sitter-usfm3",
  "tree-sitter-xml",
  "tree-sitter-yaml",
  "typed-arena",
@@ -2025,6 +2026,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "tree-sitter-usfm3"
+version = "3.0.0-alpha.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0c1e4594042c9a7bba5216f8700ca5d13928df05c187142fee4ff359385d34bf"
+dependencies = [
+ "cc",
+ "tree-sitter",
+]
+
+[[package]]
 name = "tree-sitter-xml"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2179,7 +2190,7 @@ version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf221c93e13a30d793f7645a0e7762c55d169dbb0a49671918a2319d289b10bb"
 dependencies = [
- "windows-sys 0.52.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
