@@ -23,7 +23,7 @@
         }
         textarea {
             width: 100%;
-            height: 50px;
+            height: 200px;
             margin-bottom: 10px;
         }
         button {
@@ -46,8 +46,12 @@
 <body>
     <div class="container input-area">
         <h2>Input</h2>
+        Base.usfm <button class="info-button subtle" onclick="showInfo('base')">?</button>
+
         <textarea id="value1" placeholder="Enter first value"></textarea>
+        Left.usfm <button class="info-button subtle" onclick="showInfo('left')">?</button>
         <textarea id="value2" placeholder="Enter second value"></textarea>
+        Right.usfm <button class="info-button subtle" onclick="showInfo('right')">?</button>
         <textarea id="value3" placeholder="Enter third value"></textarea>
         <button onclick="resolve()">Submit</button>
     </div>
@@ -75,6 +79,16 @@
             } else {
                 document.getElementById("result").innerText = "Error processing request.";
             }
+        }
+
+        function showInfo(type) {
+            const infoMessages = {
+                base: "git show :1:conflict.usfm > Base.usfm",
+                left: "git show :2:conflict.usfm > Left.usfm",
+                right: "git show :3:conflict.usfm > Right.usfm"
+            };
+
+            alert(infoMessages[type]);
         }
     </script>
 </body>

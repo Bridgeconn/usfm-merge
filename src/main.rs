@@ -4,15 +4,6 @@ use serde::{Deserialize, Serialize};
 use mergiraf::line_merge_and_structured_resolution;
 use mergiraf::settings::DisplaySettings;
 
-#[derive(Serialize, Deserialize)]
-struct GreetingRequest {
-    name: String,
-}
-
-#[derive(Serialize)]
-struct GreetingResponse {
-    message: String,
-}
 
 #[derive(Deserialize)]
 struct ResolveRequest {
@@ -44,12 +35,6 @@ async fn resolve(req: web::Json<ResolveRequest>) -> impl Responder {
     HttpResponse::Ok().json(response)
 }
 
-async fn greet(req: web::Json<GreetingRequest>) -> impl Responder {
-    let response = GreetingResponse {
-        message: format!("Hello, {}!", req.name),
-    };
-    HttpResponse::Ok().json(response)
-}
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
