@@ -6,8 +6,6 @@ Built in rust.
 
 Uses [mergiraf](https://codeberg.org/mergiraf/mergiraf) and [tree-sitter-usfm3](https://crates.io/crates/tree-sitter-usfm3).
 
-## API Usage
-
 ## API Usage Guide
 
 The `/resolve` API endpoint processes three input values (`base`, `left`, and `right`) and returns a conflict resolved result.
