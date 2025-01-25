@@ -18,18 +18,18 @@ The `/resolve` API endpoint processes three input values (`base`, `left`, and `r
 #### Request
 The request should include a JSON payload with the following structure:
 
-```json
+```jsonc
 {
-  "base": "string",  // Primary USFM input
-  "left": "string",  // Variant or earlier version of USFM
-  "right": "string"  // Target or revised version of USFM
+  "base": "string",  // git show :1:conflict.usfm > Base.usfm
+  "left": "string",  // git show :2:conflict.usfm > Left.usfm
+  "right": "string"  // git show :3:conflict.usfm > Right.usfm
 }
 ```
 
 #### Response
 
 On success, the API responds with:
-```json
+```jsonc
 {
   "result": "string"  // Processed result of the inputs
 }
