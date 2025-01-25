@@ -4,4 +4,4 @@ HTTP APIs to resolve git merge conflicts in USFM files via considering the parse
 
 Built in rust.
 
-Uses [mergiraf]() and [tree-sitter-usfm3]()
+Uses [mergiraf](https://codeberg.org/mergiraf/mergiraf) and [tree-sitter-usfm3](https://crates.io/crates/tree-sitter-usfm3).
